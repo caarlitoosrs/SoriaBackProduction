@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: experiencias-soria-backend
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/soria?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    root: ${LOG_LEVEL:INFO}
+    org.springframework.security: ${LOG_LEVEL:INFO}
+
+# Propiedades de la app
+app:
+  jwt-secret: ${JWT_SECRET:changeme}
+  jwt-expiration: ${JWT_EXPIRATION:3600000} # 1 hora por defecto
+cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:8081,http://localhost:8082}
