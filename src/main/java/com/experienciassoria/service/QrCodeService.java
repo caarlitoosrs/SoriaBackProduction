@@ -42,6 +42,7 @@ public class QrCodeService {
      * @param uidId ID del ExperienciaUID
      * @return Base64 encoded PNG image del QR code
      */
+
     public String generarQrCode(UUID uidId) {
         log.info("Generando QR code para UID: {}", uidId);
         
@@ -52,17 +53,17 @@ public class QrCodeService {
         log.info("Generando QR code con UID: {}", uid);
 
         try {
-            // Configurar hints para el QR code
+            
             Map<EncodeHintType, Object> hints = new HashMap<>();
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
             hints.put(EncodeHintType.MARGIN, 1);
 
-            // Crear el QR code
+            
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(uid, BarcodeFormat.QR_CODE, QR_CODE_SIZE, QR_CODE_SIZE, hints);
 
-            // Convertir a imagen
+            
             BufferedImage qrImage = new BufferedImage(QR_CODE_SIZE, QR_CODE_SIZE, BufferedImage.TYPE_INT_RGB);
             qrImage.createGraphics();
 
@@ -71,7 +72,7 @@ public class QrCodeService {
             graphics.fillRect(0, 0, QR_CODE_SIZE, QR_CODE_SIZE);
             graphics.setColor(Color.BLACK);
 
-            // Dibujar el QR code
+            
             for (int x = 0; x < QR_CODE_SIZE; x++) {
                 for (int y = 0; y < QR_CODE_SIZE; y++) {
                     if (bitMatrix.get(x, y)) {
@@ -80,7 +81,7 @@ public class QrCodeService {
                 }
             }
 
-            // Convertir a Base64
+            
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ImageIO.write(qrImage, IMAGE_FORMAT, outputStream);
             byte[] imageBytes = outputStream.toByteArray();

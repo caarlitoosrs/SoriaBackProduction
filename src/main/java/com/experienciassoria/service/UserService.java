@@ -44,7 +44,6 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // Obtener todos los usuarios
     public List<UsuarioDto> getAllUsers() {
         return usuarioRepository.findAll()
                 .stream()
@@ -52,14 +51,12 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    // Obtener un usuario por email
     public UsuarioDto getUserByEmail(String email) {
         Usuario user = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         return toDto(user);
     }
 
-    // Actualizar un usuario por email
     public UsuarioDto updateUserByEmail(String email, UpdateUserRequest request) {
         Usuario user = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -94,14 +91,12 @@ public class UserService {
         return toDto(user);
     }
 
-    // Eliminar usuario por email
     public void deleteUserByEmail(String email) {
         Usuario user = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         usuarioRepository.delete(user);
     }
 
-    // Mapeo de Usuario -> UsuarioDto
     private UsuarioDto toDto(Usuario user) {
         return new UsuarioDto(
                 user.getId(),
@@ -126,7 +121,6 @@ public class UserService {
         usuario.setPuntos(request.getPuntos() != null ? request.getPuntos() : 0);
         usuario.setFotoPerfilUrl(request.getFotoPerfilUrl());
 
-        // Hashear contraseña
         usuario.setPasswordHash(passwordEncoder.encode(request.getPassword()));
 
         usuarioRepository.save(usuario);
@@ -134,14 +128,12 @@ public class UserService {
         return toDto(usuario);
     }
 
-    // 🔹 Eliminar usuario (soft delete)
     @Transactional
     public void eliminarUsuario(UUID id) {
         log.info("Eliminando usuario: {}", id);
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 
-        // Validar que no sea el último ADMIN
         if (usuario.getRole() == Usuario.Rol.ADMIN) {
             long totalAdmins = usuarioRepository.findAll().stream()
                     .filter(u -> u.getRole() == Usuario.Rol.ADMIN && u.isActivo())
@@ -152,13 +144,11 @@ public class UserService {
             }
         }
 
-        // Soft delete: marcar como inactivo
         usuario.setActivo(false);
         usuarioRepository.save(usuario);
         log.info("Usuario {} marcado como inactivo", id);
     }
 
-    // 🔹 Obtener pasaporte de un usuario específico
     public PasaporteDTO getPasaporteUsuario(UUID id) {
         log.info("Obteniendo pasaporte del usuario: {}", id);
         if (!usuarioRepository.existsById(id)) {
@@ -167,7 +157,6 @@ public class UserService {
         return pasaporteService.getPasaporte(id);
     }
 
-    // 🔹 Obtener experiencias registradas por el usuario
     public List<RegistroExperienciaDTO> getExperienciasUsuario(UUID id) {
         log.info("Obteniendo experiencias del usuario: {}", id);
         Usuario usuario = usuarioRepository.findById(id)
@@ -185,7 +174,6 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    // 🔹 Obtener comentarios del usuario
     public List<ComentarioDTO> getComentariosUsuario(UUID id) {
         log.info("Obteniendo comentarios del usuario: {}", id);
         Usuario usuario = usuarioRepository.findById(id)

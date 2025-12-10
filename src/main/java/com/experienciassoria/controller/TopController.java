@@ -17,7 +17,6 @@ public class TopController {
         this.topService = topService;
     }
 
-    // 🔹 GET /api/top — obtener top de usuarios
     @GetMapping
     public ResponseEntity<List<UsuarioRankingDTO>> getTopUsuarios() {
         return ResponseEntity.ok(topService.getTopUsuarios());

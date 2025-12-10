@@ -22,27 +22,25 @@ public class ComentarioController {
         this.jwtUtils = jwtUtils;
     }
 
-    // 🔹 GET /api/experiencias/{id}/comentarios — obtener comentarios
     @GetMapping
     public ResponseEntity<List<ComentarioDTO>> getComentarios(@PathVariable UUID experienciaId) {
         return ResponseEntity.ok(comentarioService.getComentariosByExperiencia(experienciaId));
     }
 
-    // 🔹 POST /api/experiencias/{id}/comentarios — crear un comentario
     @PostMapping
     public ResponseEntity<ComentarioDTO> crearComentario(
             @PathVariable UUID experienciaId,
             @RequestBody CrearComentarioRequest request,
             HttpServletRequest httpRequest) {
 
-        // Obtener email del usuario a partir del token
+                
         String token = jwtUtils.getTokenFromRequest(httpRequest);
         String email = jwtUtils.getEmailFromToken(token);
 
-        // Obtener el ID del usuario
+        
         UUID usuarioId = comentarioService.getUsuarioIdByEmail(email);
 
-        // Crear comentario
+        
         ComentarioDTO nuevoComentario = comentarioService.crearComentario(usuarioId, experienciaId, request.getTexto());
 
         return ResponseEntity.ok(nuevoComentario);

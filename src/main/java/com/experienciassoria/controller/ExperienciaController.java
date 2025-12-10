@@ -30,7 +30,7 @@ public class ExperienciaController {
         this.qrCodeService = qrCodeService;
     }
 
-    // 🔹 GET /api/experiencias/visibles — solo visibles
+    
     @GetMapping("/visibles")
     public ResponseEntity<List<ExperienciaListDTO>> getAllVisibles(
             @RequestParam(defaultValue = "0") int offset,
@@ -38,7 +38,7 @@ public class ExperienciaController {
         return ResponseEntity.ok(experienciaService.getAllActivoExperiencias(offset, limit));
     }
 
-    // 🔹 GET /api/experiencias/admin — todas las experiencias (ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public ResponseEntity<List<ExperienciaListDTO>> getAllForAdmin(
@@ -47,20 +47,20 @@ public class ExperienciaController {
         return ResponseEntity.ok(experienciaService.getAllExperiencias(offset, limit));
     }
 
-    // 🔹 GET /api/experiencias/{id} — detalle
+    
     @GetMapping("/{id}")
     public ResponseEntity<ExperienciaDetailDTO> getExperienciaById(@PathVariable UUID id) {
         return ResponseEntity.ok(experienciaService.getExperienciaById(id));
     }
 
-    // 🔹 POST /api/experiencias — crear nueva experiencia (solo ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ExperienciaDetailDTO> crearExperiencia(@RequestBody CrearExperienciaRequest request) {
         return ResponseEntity.ok(experienciaService.crearExperiencia(request));
     }
 
-    // 🔹 PUT /api/experiencias/{id} — actualizar experiencia (solo ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<ExperienciaDetailDTO> updateExperiencia(
@@ -69,7 +69,7 @@ public class ExperienciaController {
         return ResponseEntity.ok(experienciaService.updateExperiencia(id, request));
     }
 
-    // 🔹 DELETE /api/experiencias/{id} — soft delete (solo ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExperiencia(@PathVariable UUID id) {
@@ -77,16 +77,14 @@ public class ExperienciaController {
         return ResponseEntity.noContent().build();
     }
 
-    // 🔹 GET /api/experiencias/{id}/uids — obtener UIDs de una experiencia (solo
-    // ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}/uids")
     public ResponseEntity<List<ExperienciaUIDDTO>> getUidsByExperiencia(@PathVariable UUID id) {
         return ResponseEntity.ok(experienciaService.getUidsByExperiencia(id));
     }
 
-    // 🔹 POST /api/experiencias/{id}/generar-uid — generar UIDs para una
-    // experiencia (solo ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{id}/generar-uid")
     public ResponseEntity<GenerarUIDsResponse> generarUids(@PathVariable UUID id,
@@ -94,8 +92,7 @@ public class ExperienciaController {
         return ResponseEntity.ok(experienciaUIDService.generarUids(id, cantidad));
     }
 
-    // 🔹 GET /api/experiencias/uids/{uidId}/qr — generar QR code de un UID (solo
-    // ADMIN)
+    
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/uids/{uidId}/qr")
     public ResponseEntity<Map<String, String>> generarQrCode(@PathVariable UUID uidId) {

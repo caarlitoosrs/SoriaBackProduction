@@ -38,7 +38,6 @@ public class SecurityConfig {
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
     
-    // Parsear los orígenes permitidos desde la variable de entorno
     List<String> origins = Arrays.stream(allowedOrigins.split(","))
             .map(String::trim)
             .collect(Collectors.toList());

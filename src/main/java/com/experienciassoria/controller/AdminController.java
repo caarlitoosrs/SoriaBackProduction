@@ -22,30 +22,21 @@ public class AdminController {
         this.userService = userService;
     }
 
-    // Obtener todos los usuarios
     @GetMapping
     public List<UsuarioDto> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // Obtener usuario por email
     @GetMapping("/{email}")
     public UsuarioDto getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 
-    // Actualizar usuario por email
     @PutMapping("/{email}")
     public UsuarioDto updateUser(@PathVariable String email, @RequestBody UpdateUserRequest request) {
         return userService.updateUserByEmail(email, request);
     }
 
-    // Eliminar usuario por email
-    // @PreAuthorize("hasRole('ADMIN')")
-    // @DeleteMapping("/{email}")
-    // public void deleteUser(@PathVariable String email) {
-    //     userService.deleteUserByEmail(email);
-    // }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
@@ -53,7 +44,6 @@ public class AdminController {
         return userService.createUser(request);
     }
 
-        // 🔹 DELETE /api/admin/usuarios/{id} — eliminar usuario
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarUsuario(@PathVariable UUID id) {

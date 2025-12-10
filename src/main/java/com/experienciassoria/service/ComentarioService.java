@@ -26,7 +26,6 @@ public class ComentarioService {
                 this.usuarioRepository = usuarioRepository;
         }
 
-        // 🔹 Obtener comentarios de una experiencia
         public List<ComentarioDTO> getComentariosByExperiencia(UUID experienciaId) {
                 Experiencia experiencia = experienciaRepository.findById(experienciaId)
                                 .orElseThrow(() -> new RuntimeException("Experiencia no encontrada"));
@@ -42,7 +41,6 @@ public class ComentarioService {
                                 .collect(Collectors.toList());
         }
 
-        // 🔹 Crear un nuevo comentario
         public ComentarioDTO crearComentario(UUID usuarioId, UUID experienciaId, String request) {
                 Usuario usuario = usuarioRepository.findById(usuarioId)
                                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -67,14 +65,12 @@ public class ComentarioService {
                                 comentario.getUsuario().getId());
         }
 
-        // 🔹 Actualizar comentario
         public ComentarioDTO actualizarComentario(UUID comentarioId, UUID usuarioId, String nuevoTexto) {
                 Usuario usuario = usuarioRepository.findById(usuarioId)
                                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
                 Comentario comentario = comentarioRepository.findById(comentarioId)
                                 .orElseThrow(() -> new RuntimeException("Comentario no encontrado"));
 
-                // Validar autor
                 if (!comentario.getUsuario().getId().equals(usuarioId)) {
                         throw new RuntimeException("No tienes permisos para editar este comentario");
                 }
@@ -91,13 +87,11 @@ public class ComentarioService {
                                 comentario.getUsuario().getId());
         }
 
-        // 🔹 Eliminar comentario
         public void eliminarComentario(UUID comentarioId, UUID usuarioId) {
 
                 Comentario comentario = comentarioRepository.findById(comentarioId)
                                 .orElseThrow(() -> new RuntimeException("Comentario no encontrado"));
 
-                // Validar autor
                 if (!comentario.getUsuario().getId().equals(usuarioId)) {
                         throw new RuntimeException("No tienes permisos para eliminar este comentario");
                 }

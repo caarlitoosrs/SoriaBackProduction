@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, UUID> {
-    // 🔹 Obtener todos los comentarios de una experiencia
+    
     List<Comentario> findByExperienciaOrderByFechaDesc(Experiencia experiencia);
 
     List<Comentario> findByUsuarioOrderByFechaDesc(Usuario usuario);

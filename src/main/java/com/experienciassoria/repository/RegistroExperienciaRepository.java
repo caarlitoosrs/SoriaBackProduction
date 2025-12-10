@@ -12,12 +12,12 @@ import java.util.UUID;
 @Repository
 public interface RegistroExperienciaRepository extends JpaRepository<RegistroExperiencia, UUID> {
 
-    // 🔹 Buscar todas las experiencias registradas por un usuario
+    
     List<RegistroExperiencia> findByUsuario(Usuario usuario);
 
-    // 🔹 Comprobar si el usuario ya registró una experiencia concreta
+    
     boolean existsByUsuario_IdAndExperiencia_Id(UUID usuarioId, UUID experienciaId);
 
-    // 🔹 Buscar un registro concreto
+    
     Optional<RegistroExperiencia> findByUsuario_IdAndExperiencia_Id(UUID usuarioId, UUID experienciaId);
 }

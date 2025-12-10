@@ -12,9 +12,9 @@ import java.util.UUID;
 @Repository
 public interface ExperienciaUIDRepository extends JpaRepository<ExperienciaUID, UUID> {
 
-    // 🔹 Buscar un UID activo (para validar escaneo)
+    
     Optional<ExperienciaUID> findByUidAndActivoTrue(String uid);
     
-    // 🔹 Buscar todos los UIDs de una experiencia
+    
     List<ExperienciaUID> findByExperiencia(Experiencia experiencia);
 }

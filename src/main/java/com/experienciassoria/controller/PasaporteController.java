@@ -23,21 +23,20 @@ public class PasaporteController {
         this.jwtUtils = jwtUtils;
         this.comentarioService = comentarioService;
     }
-
-    // 🔹 GET /api/pasaporte — devuelve el pasaporte del usuario autenticado
+    
     @GetMapping
     public ResponseEntity<PasaporteDTO> getPasaporte(HttpServletRequest request) {
         String token = extractToken(request);
         String email = jwtUtils.getEmailFromToken(token);
 
         UUID usuarioId = pasaporteService
-                .getUsuarioIdByEmail(email); // lo implementaremos abajo (helper pequeño)
+                .getUsuarioIdByEmail(email); 
         PasaporteDTO pasaporte = pasaporteService.getPasaporte(usuarioId);
 
         return ResponseEntity.ok(pasaporte);
     }
 
-    // 🔹 POST /api/pasaporte/registrar — registrar una nueva experiencia
+    
     @PostMapping("/registrar")
     public ResponseEntity<RegistroExperienciaDTO> registrarExperiencia(
             HttpServletRequest request,
@@ -53,7 +52,7 @@ public class PasaporteController {
         return ResponseEntity.ok(registro);
     }
 
-    // Extraer token del header
+    
     private String extractToken(HttpServletRequest request) {
         String header = request.getHeader("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {

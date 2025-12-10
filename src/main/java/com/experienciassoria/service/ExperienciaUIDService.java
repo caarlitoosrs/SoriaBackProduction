@@ -47,7 +47,6 @@ public class ExperienciaUIDService {
                         int intentos = 0;
                         final int MAX_INTENTOS = 10;
 
-                        // Generar UID único
                         do {
                                 String uidGenerado = UUID.randomUUID().toString().replace("-", "").substring(0, 16)
                                                 .toUpperCase();

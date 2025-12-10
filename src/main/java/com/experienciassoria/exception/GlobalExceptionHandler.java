@@ -159,7 +159,7 @@ public class GlobalExceptionHandler {
         public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(
                         DataIntegrityViolationException ex, HttpServletRequest request) {
                 String message = ex.getMessage();
-                // Si es un constraint único, tratarlo como recurso duplicado
+                
                 if (message != null && (message.contains("Duplicate entry") ||
                                 message.contains("unique constraint") ||
                                 message.contains("could not execute statement"))) {
@@ -171,7 +171,7 @@ public class GlobalExceptionHandler {
                         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
                 }
 
-                // Otros tipos de violaciones de integridad
+                
                 ErrorResponse error = new ErrorResponse(
                                 HttpStatus.BAD_REQUEST.value(),
                                 "Error de integridad de datos",

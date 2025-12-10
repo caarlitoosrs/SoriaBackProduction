@@ -23,7 +23,7 @@ public class JwtUtils {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    // Generar token
+    
     public String generateToken(String email) {
         return Jwts.builder()
                 .setSubject(email)
@@ -33,7 +33,7 @@ public class JwtUtils {
                 .compact();
     }
 
-    // Obtener email (subject)
+    
     public String getEmailFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -43,7 +43,7 @@ public class JwtUtils {
                 .getSubject();
     }
 
-    // Validar token
+    
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -56,7 +56,8 @@ public class JwtUtils {
         }
     }
 
-    // Extraer token del header Authorization
+    
+
     public String extractTokenFromRequest(HttpServletRequest request) {
         String header = request.getHeader("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {
@@ -68,7 +69,7 @@ public class JwtUtils {
     public String getTokenFromRequest(HttpServletRequest httpRequest) {
     String header = httpRequest.getHeader("Authorization");
     if (header != null && header.startsWith("Bearer ")) {
-        return header.substring(7); // quitar "Bearer "
+        return header.substring(7); 
     }
     throw new RuntimeException("No se encontró token en la petición");
 

@@ -17,7 +17,7 @@ public class TopService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    // 🔹 Obtener el top 10 de usuarios por puntos
+    
     public List<UsuarioRankingDTO> getTopUsuarios() {
         return usuarioRepository.findTop10ByOrderByPuntosDesc().stream()
                 .map(u -> new UsuarioRankingDTO(

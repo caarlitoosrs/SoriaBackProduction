@@ -25,7 +25,7 @@ public class ExperienciaService {
                 this.experienciaUIDRepository = experienciaUIDRepository;
         }
 
-        // 🔹 Obtener todas las experiencias (ADMIN, paginadas)
+        
         public List<ExperienciaListDTO> getAllExperiencias(int offset, int limit) {
                 return experienciaRepository.findAll(PageRequest.of(offset, limit)).stream()
                                 .map(exp -> new ExperienciaListDTO(
@@ -37,7 +37,7 @@ public class ExperienciaService {
                                 .collect(Collectors.toList());
         }
 
-        // 🔹 Obtener experiencias Activos (USUARIOS)
+        
         public List<ExperienciaListDTO> getAllActivoExperiencias(int offset, int limit) {
                 return experienciaRepository.findByActivoTrue(PageRequest.of(offset, limit)).stream()
                                 .map(exp -> new ExperienciaListDTO(
@@ -49,7 +49,7 @@ public class ExperienciaService {
                                 .collect(Collectors.toList());
         }
 
-        // 🔹 Obtener detalle
+        
         public ExperienciaDetailDTO getExperienciaById(UUID id) {
                 Experiencia exp = experienciaRepository.findById(id)
                                 .orElseThrow(() -> new RuntimeException("Experiencia no encontrada"));
@@ -67,7 +67,7 @@ public class ExperienciaService {
                                 exp.isActivo());
         }
 
-        // 🔹 Crear experiencia
+        
         public ExperienciaDetailDTO crearExperiencia(CrearExperienciaRequest request) {
                 Experiencia exp = Experiencia.builder()
                                 .titulo(request.getTitulo())
@@ -89,7 +89,7 @@ public class ExperienciaService {
                 return getExperienciaById(exp.getId());
         }
 
-        // 🔹 Actualizar experiencia
+        
         public ExperienciaDetailDTO updateExperiencia(UUID id, CrearExperienciaRequest request) {
                 Experiencia exp = experienciaRepository.findById(id)
                                 .orElseThrow(() -> new RuntimeException("Experiencia no encontrada"));
@@ -107,7 +107,7 @@ public class ExperienciaService {
                 return getExperienciaById(id);
         }
 
-        // 🔹 Soft delete
+        
         public void softDeleteExperiencia(UUID id) {
                 Experiencia exp = experienciaRepository.findById(id)
                                 .orElseThrow(() -> new RuntimeException("Experiencia no encontrada"));
@@ -115,7 +115,7 @@ public class ExperienciaService {
                 experienciaRepository.save(exp);
         }
 
-        // 🔹 Obtener UIDs de una experiencia (solo ADMIN)
+        
         public List<ExperienciaUIDDTO> getUidsByExperiencia(UUID experienciaId) {
                 Experiencia experiencia = experienciaRepository.findById(experienciaId)
                                 .orElseThrow(() -> new ResourceNotFoundException("Experiencia no encontrada"));
@@ -125,13 +125,12 @@ public class ExperienciaService {
                                                 uid.getId(),
                                                 uid.getUid(),
                                                 uid.isActivo(),
-                                                uid.getFechaGeneracion() // Mapea fechaGeneracion del modelo a
-                                                                         // fechaCreacion del DTO
+                                                uid.getFechaGeneracion() 
+                                                                         
                                 ))
                                 .collect(Collectors.toList());
         }
 
-        // 🔹 Obtener experiencia por UID (público)
         public ExperienciaDetailDTO getExperienciaByUid(String uid) {
                 com.experienciassoria.model.ExperienciaUID experienciaUID = experienciaUIDRepository
                                 .findByUidAndActivoTrue(uid)

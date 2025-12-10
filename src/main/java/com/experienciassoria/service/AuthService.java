@@ -73,7 +73,6 @@ public class AuthService {
         Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        // Actualizar los campos que vengan en la request
         if (request.getNombre() != null && !request.getNombre().isEmpty()) {
             usuario.setNombre(request.getNombre());
         }

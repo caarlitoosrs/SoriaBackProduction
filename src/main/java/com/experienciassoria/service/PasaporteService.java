@@ -38,7 +38,6 @@ public class PasaporteService {
                                 .getId();
         }
 
-        // 🔹 Obtener pasaporte completo de un usuario
         public PasaporteDTO getPasaporte(UUID usuarioId) {
                 Usuario usuario = usuarioRepo.findById(usuarioId)
                                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -57,7 +56,6 @@ public class PasaporteService {
                 return new PasaporteDTO(usuario.getId(), usuario.getNombre(), usuario.getPuntos(), registros);
         }
 
-        // 🔹 Registrar una experiencia (a partir de un UID)
         @Transactional
         public RegistroExperienciaDTO registrarExperiencia(UUID usuarioId, RegistroRequest request) {
                 Usuario usuario = usuarioRepo.findById(usuarioId)
@@ -87,7 +85,6 @@ public class PasaporteService {
 
                 registroRepo.save(registro);
 
-                // 🔸 sumar puntos al usuario
                 usuario.setPuntos(usuario.getPuntos() + registro.getPuntosOtorgados());
                 usuarioRepo.save(usuario);
 
