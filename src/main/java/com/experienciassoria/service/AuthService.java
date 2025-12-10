@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.time.Instant;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +55,10 @@ public class AuthService {
     public AuthResponse login(LoginRequest request) {
         Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (!usuario.isActivo()) {
+            throw new RuntimeException("Usuario inactivo");
+        }
 
         if (!passwordEncoder.matches(request.getPassword(), usuario.getPasswordHash())) {
             throw new RuntimeException("Contraseña incorrecta");
