@@ -19,7 +19,7 @@ public class TopService {
 
     
     public List<UsuarioRankingDTO> getTopUsuarios() {
-        return usuarioRepository.findTop10ByOrderByPuntosDesc().stream()
+        return usuarioRepository.findTop10ByActivoTrueOrderByPuntosDesc().stream()
                 .map(u -> new UsuarioRankingDTO(
                         u.getNombre(),
                         u.getPuntos(),
