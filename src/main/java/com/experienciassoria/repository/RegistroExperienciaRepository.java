@@ -13,7 +13,7 @@ import java.util.UUID;
 public interface RegistroExperienciaRepository extends JpaRepository<RegistroExperiencia, UUID> {
 
     
-    List<RegistroExperiencia> findByUsuario(Usuario usuario);
+    List<RegistroExperiencia> findByUsuarioAndExperienciaActivoTrue(Usuario usuario);
 
     
     boolean existsByUsuario_IdAndExperiencia_Id(UUID usuarioId, UUID experienciaId);

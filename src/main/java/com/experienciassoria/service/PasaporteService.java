@@ -42,7 +42,7 @@ public class PasaporteService {
                 Usuario usuario = usuarioRepo.findById(usuarioId)
                                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-                List<RegistroExperienciaDTO> registros = registroRepo.findByUsuario(usuario).stream()
+                List<RegistroExperienciaDTO> registros = registroRepo.findByUsuarioAndExperienciaActivoTrue(usuario).stream()
                                 .map(r -> new RegistroExperienciaDTO(
                                                 r.getExperiencia().getId(),
                                                 r.getExperiencia().getTitulo(),

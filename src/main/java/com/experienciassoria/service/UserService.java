@@ -162,7 +162,7 @@ public class UserService {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
 
-        return registroRepository.findByUsuario(usuario).stream()
+        return registroRepository.findByUsuarioAndExperienciaActivoTrue(usuario).stream()
                 .map(r -> new RegistroExperienciaDTO(
                         r.getExperiencia().getId(),
                         r.getExperiencia().getTitulo(),

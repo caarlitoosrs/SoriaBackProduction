@@ -25,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -43,6 +44,28 @@ public class DataLoader {
 
         @PostConstruct
         public void init() {
+                                List<String> comentariosSoria = Arrays.asList(
+    "Una experiencia muy auténtica. Se agradece encontrar sitios así, lejos del turismo masificado.",
+    "Todo fue perfecto, desde la organización hasta el entorno. Soria sorprende y mucho.",
+    "Un plan diferente y muy bien pensado. Ideal para venir en pareja o con amigos.",
+    "La calma del lugar es espectacular. Sales de allí con las pilas totalmente cargadas.",
+    "No esperaba encontrar algo tan bonito y tan bien cuidado. Repetiremos seguro.",
+    "Una experiencia sencilla pero muy especial. De esas que se recuerdan con una sonrisa.",
+    "El entorno natural es impresionante y la experiencia está muy bien integrada en él.",
+    "Trato cercano y muy profesional. Se nota que conocen y quieren la tierra.",
+    "Perfecto para desconectar del ruido y disfrutar sin prisas. Muy recomendable.",
+    "Una sorpresa muy agradable. Merece mucho la pena descubrir rincones así.",
+    "Todo estaba muy bien preparado y el ambiente era inmejorable. Para volver sin dudarlo.",
+    "Un lugar con encanto y una experiencia muy bien cuidada. Soria tiene mucho que ofrecer.",
+    "Ideal para cambiar de aires y descubrir algo diferente. Nos encantó.",
+    "Una experiencia tranquila, bonita y muy auténtica. Justo lo que buscábamos.",
+    "De esas experiencias que no necesitan grandes lujos para ser especiales.",
+    "El sitio es precioso y la experiencia está muy bien pensada. Totalmente recomendable.",
+    "Una forma fantástica de conocer la provincia y disfrutarla con calma.",
+    "Salimos encantados. Todo fue muy natural y agradable, sin agobios.",
+    "Una experiencia diferente, muy bien organizada y en un entorno espectacular.",
+    "Sencillamente genial. De lo mejor que hemos hecho por la zona."
+);
 
                 if (usuarioRepository.count() == 0) {
                         List<Usuario> usuarios = List.of(
@@ -54,12 +77,12 @@ public class DataLoader {
                                         Usuario.builder().nombre("Carlos").email("carlos@gmail.com")
                                                         .passwordHash(passwordEncoder.encode("12345678"))
                                                         .role(Usuario.Rol.USER).puntos(0)
-                                                        .fotoPerfilUrl("https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D")
+                                                        .fotoPerfilUrl("https://www.clinicalondres.es/wp-content/uploads/2023/08/iStock-1158245623-1024x682.jpg")
                                                         .fechaCreacion(Instant.now()).activo(true).build(),
                                         Usuario.builder().nombre("Laura").email("laura@gmail.com")
                                                         .passwordHash(passwordEncoder.encode("12345678"))
                                                         .role(Usuario.Rol.USER).puntos(0)
-                                                        .fotoPerfilUrl("https://plus.unsplash.com/premium_photo-1689568158814-3b8e9c1a9618?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8JTIzcGVyc29uYXxlbnwwfHwwfHx8MA%3D%3D")
+                                                        .fotoPerfilUrl("https://img.freepik.com/foto-gratis/retrato-alegre-joven-mujer-bonita-bailando-feliz-expresion-cara-sonriente-cabello-largo-estado-animo-positivo-emocional-traje-estilo-hipster-tendencia-moda-verano-jeans-camisa-rayas-aislado_285396-714.jpg")
                                                         .fechaCreacion(Instant.now()).activo(true).build(),
                                         Usuario.builder().nombre("Michelle").email("michelle@gmail.com")
                                                         .passwordHash(passwordEncoder.encode("12345678"))
@@ -99,13 +122,12 @@ public class DataLoader {
                                                         .galeriaImagenes((List.of(
                                                                         "https://www.sorianitelaimaginas.com/wp-content/uploads/2025/03/Panorama-Tiermes-2-2048x1047.jpg",
                                                                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPADscNh9i54QVvtrOmDTdR2-obe0i6u4lwreNSNeiCw&s=10",
-                                                                        "https://www.turismocastillayleon.com/es/patrimonio-cultura/yacimiento-arqueologico-tiermes.ficheros/37134-37128_SX_0_bic.jpg/37134-37128_SX_0_bic.jpg",
-                                                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc9r9K2H9KafJuWEdXs8rO07FDR-JGo8TOFunaG_ZBOGzw9Zr_aFjETACI&s=10")))
+                                                                        "https://www.turismocastillayleon.com/es/patrimonio-cultura/yacimiento-arqueologico-tiermes.ficheros/37134-37128_SX_0_bic.jpg/37134-37128_SX_0_bic.jpg")))
                                                         .puntosOtorgados(20)
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/12/Panoramica.jpg")
+                                                                        "https://www.excursionesyrutasporcastillayleon.com/wp-content/uploads/2016/01/12485804_1128732050478771_7020561739176423781_o-1-2000x1333.jpg")
                                                         .titulo("Parque Natural Cañón del Río Lobos")
                                                         .descripcion("Parque nacional desde 1985, con cañón de río boscoso de 19 km, conocido por la anidación de buitres.")
                                                         .categoria(Categoria.AIRE_LIBRE)
@@ -115,13 +137,12 @@ public class DataLoader {
                                                         .galeriaImagenes((List.of(
                                                                         "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/12/Plantilla-FOTO-4.jpg",
                                                                         "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/12/Plantilla-FOTO-4.jpg",
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/12/Canon-del-Rio-Lobos.jpg",
-                                                                        "https://www.excursionesyrutasporcastillayleon.com/wp-content/uploads/2016/01/lobos1.jpg")))
+                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/12/Canon-del-Rio-Lobos.jpg")))
                                                         .puntosOtorgados(20)
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_chapuzon.jpg")
+                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_h.jpg")
                                                         .titulo("Playa Pita")
                                                         .descripcion("Disfruta de la playa de Soria")
                                                         .categoria(Categoria.AIRE_LIBRE)
@@ -129,10 +150,10 @@ public class DataLoader {
                                                         .ubicacionLat(BigDecimal.valueOf(41.8759))
                                                         .ubicacionLng(BigDecimal.valueOf(-2.7042))
                                                         .galeriaImagenes((List.of(
-                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_g-1024x649.jpg",
-                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_a-1024x684.jpg",
-                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_a-1024x684.jpg",
-                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_b-1024x768.jpg")))
+                                                                        "https://piscinas-naturales.es/wp-content/uploads/2025/01/Playa-Pita-en-el-Pantano-de-Cuerda-del-Pozo-Soria-Peter-Walker.jpg",
+                                                                        "https://elige.soria.es/wp-content/uploads/2015/07/Playa-Pita_Soria_2015_e.jpg",
+                                                                        "https://fotos.hoteles.net/articulos/playa-pita-soria-8407-1.jpg",
+                                                                        "https://ecourbion.com/fotografias/ecourbion-cuerda-del-pozo.jpg")))
                                                         .puntosOtorgados(10)
                                                         .activo(true).build(),
                                         Experiencia.builder()
@@ -162,7 +183,6 @@ public class DataLoader {
                                                         .ubicacionLng(BigDecimal.valueOf(-2.2281))
                                                         .galeriaImagenes((List.of(
                                                                         "http://www.rutadelasicnitas.com/assets/img/yacimientos/La-Matecasa/La_Matecasa-Bretun%20(1).jpg",
-                                                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBc8uzNxiXQD8CKww-2yJM1GzEhlEw5T01x-4ab2bI9Q&s=10",
                                                                         "http://www.rutadelasicnitas.com/assets/img/yacimientos/San-Roque/San%20Roque%20(1).jpg",
                                                                         "https://destinocastillayleon.es/index/wp-content/uploads/2018/03/b9058c932cc7062557bd68ce04c34629.jpg")))
                                                         .puntosOtorgados(30)
@@ -170,7 +190,7 @@ public class DataLoader {
 
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/12/soria-ni-te-la-imaginas-castillo-de-caracena-soria-3.jpg")
+                                                                        "https://www.turismocastillayleon.com/es/patrimonio-cultura/castillo-caracena.ficheros/196141-Castillo%20de%20Caracena%20%286%29.jpg/g,196141-Castillo%20de%20Caracena%20%286%29.jpg")
                                                         .titulo("Castillo de Caracena")
                                                         .descripcion("Fortaleza medieval sobre un barranco, con vistas espectaculares. Bien de Interés Cultural; conserva torres, murallas y restos del patio de armas.")
                                                         .categoria(Categoria.MONUMENTO)
@@ -179,14 +199,14 @@ public class DataLoader {
                                                         .ubicacionLng(BigDecimal.valueOf(-3.095))
                                                         .galeriaImagenes((List.of(
                                                                         "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/12/Casracena.jpg",
+                                                                        "https://dondeelvira.com/wp-content/uploads/2023/03/Castillo-de-Caracena_Casa-Rural-Donde-Elvira-1-optimized.jpg",
                                                                         "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/12/Castillo-caracena-desde-la-carretera.jpg",
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/08/Caracena-Castillo-2048x305.jpg",
                                                                         "https://i0.wp.com/www.soriaestademoda.org/wp-content/uploads/2020/04/Caracena-Castillo-Parapente-2.jpg?fit=1280%2C720&ssl=1")))
                                                         .puntosOtorgados(20)
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.caminodelcid.org/sites/default/files/styles/406x406/public/2024-08/gal-destierro-soria-burgo-de-osma-muralla-catedral-puente-rio-ucero-alcjpg.jpg?itok=TvA3FLX7")
+                                                                        "https://www.caminodelcid.org/sites/default/files/styles/532x532/public/2024-08/gal-destierro-soria-burgo-de-osma-rio-ucero-pueblos-muralla-catedral-alcjpg.jpg")
                                                         .titulo("Murallas del Burgo de Osma")
                                                         .descripcion("Torre campanario gótica separada de la catedral, visitable, con vistas sobre todo el casco histórico y la muralla medieval.")
                                                         .categoria(Categoria.MONUMENTO)
@@ -202,7 +222,7 @@ public class DataLoader {
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sanestebandegormaz.org/multimedia/secciones/sm-3-0-1620319847.jpg")
+                                                                        "https://www.vinuesa.es/sites/vinuesa.es/files/public/images/default/carousel_noticias/puentes.jpg")
                                                         .titulo("Puente Romano sobre el Río Duero")
                                                         .descripcion("Puente románico de piedra con arcos de medio punto; uno de los símbolos del pueblo y parte del Camino del Cid. Puedes aprovechar y visitar la fortaleza.")
                                                         .categoria(Categoria.MONUMENTO)
@@ -210,15 +230,15 @@ public class DataLoader {
                                                         .ubicacionLat(BigDecimal.valueOf(41.9242))
                                                         .ubicacionLng(BigDecimal.valueOf(-2.8703))
                                                         .galeriaImagenes((List.of(
-                                                                        "https://www.sanestebandegormaz.org/multimedia/secciones/sm-3-0-1595956559.jpg",
-                                                                        "https://img.freepik.com/fotos-premium/vista-aerea-puente-romano-que-cruza-rio-duero-su-paso-san-esteban-gormaz-soria_395383-3119.jpg",
-                                                                        "https://media-cdn.tripadvisor.com/media/photo-s/1c/49/bb/fa/maravilloso-puente-de.jpg",
-                                                                        "https://imagenes.elpais.com/resizer/v2/UFXZTS7745DM3NCIR7WUJJVIFY.jpg?auth=4dd92fb1ffaa6f066df1eecfbfb03dbcae599356b738c29a3525d17bccc06996&width=414")))
+                                                                        "https://miro.medium.com/1*qjco5duReM1hwSwz4Oi82Q.jpeg",
+                                                                        "https://rutadelvinoriberadelduero.es/wp-content/uploads/2024/10/puentes_langa_soria_ribera-1024x535.jpg",
+                                                                        "https://www.turismosoria.es/wp-content/uploads/2016/05/turismo-soria-puente-medieval-sobre-el-rio-duero-soria.jpg",
+                                                                        "https://www.turismosoria.es/wp-content/uploads/2016/05/turismo-soria-puente-medieval-rio-duero-soria-3.jpg")))
                                                         .puntosOtorgados(10)
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/11/Panoramica-castillo-de-Berlanga.jpg")
+                                                                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/c5/76/e4/vistas-desde-abajo-en.jpg")
                                                         .titulo("Castillo de Berlanga del Duero")
                                                         .descripcion("Impresionante fortaleza renacentista levantada sobre una antigua alcazaba árabe. Incluye restos del recinto amurallado y del palacio de los Tovar.")
                                                         .categoria(Categoria.MONUMENTO)
@@ -234,7 +254,7 @@ public class DataLoader {
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/12/GORMAAZ.jpg")
+                                                                        "https://content-viajes.nationalgeographic.com.es/medio/2024/12/17/san-esteban-de-gormaz_34692c16_389509037_241217140837_1280x853.webp")
                                                         .titulo("Fortaleza Califal de Gormaz")
                                                         .descripcion("Impresionante fortaleza islámica del siglo X, una de las mayores de Europa en su época. Desde su muralla hay vistas al Duero. Monumento Nacional.")
                                                         .categoria(Categoria.MONUMENTO)
@@ -252,7 +272,7 @@ public class DataLoader {
                                         Experiencia.builder()
                                                         .titulo("Museo de Arte Contemporáneo de Ayllón")
                                                         .imagenPortadaUrl(
-                                                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG5vAQPQb4mgd4KnaYO-dD9IqNfd_slux-BzzSfoO7Vg&s=10")
+                                                                        "https://eladelantado.com/wp-content/uploads/2023/06/1-MAC-ayllon.jpg")
                                                         .descripcion("Pintores de renombre como Barjola, Genovés, Alcain, Alcorlo, Somoza y Amalia Avia donaron sus obras al Ayuntamiento para fomentar el interés por el arte.")
                                                         .categoria(Categoria.MUSEO)
                                                         .direccion("Pl. Obispo Vellosillo, 1, 40520 Ayllón, Segovia")
@@ -260,7 +280,6 @@ public class DataLoader {
                                                         .ubicacionLng(BigDecimal.valueOf(-3.1489))
                                                         .galeriaImagenes((List.of(
                                                                         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/88/0b/b0/palacio-del-obispo-vellosillo.jpg?w=900&h=500&s=1",
-                                                                        "https://eladelantado.com/wp-content/uploads/2023/06/1-MAC-ayllon.jpg",
                                                                         "https://lh5.googleusercontent.com/proxy/2FHmdvT-BXBogb5ZP6LREILKw7Jlq8nGVORUv7U_UuZkTUEr7VqlAPEXw1YeMMAnFXuYM1GbTY1sVV5wkSjWAefBpPqhbQrmMWjOsF_eevrbYT1rcZOoRTdrMLD394TRMTp2gIPXvjrB",
                                                                         "https://masdearte.com/media/n_almoneda23_ifema1-1024x682.jpg")))
                                                         .puntosOtorgados(10)
@@ -301,7 +320,7 @@ public class DataLoader {
                                                         .titulo("Museo Monográfico de Tiermes")
                                                         .descripcion("Visita el museo que contiene las piezas halladas en el yacimiento")
                                                         .imagenPortadaUrl(
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2021/11/Museo-de-Tiermes-Exterior-2048x299.jpg")
+                                                                        "https://www.clinicalondres.es/wp-content/uploads/2023/08/iStock-1158245623-1024x682.jpg")
                                                         .categoria(Categoria.MUSEO)
                                                         .direccion("Paraje Venta De Tiermes, 0 Km 7 Por, 42344 Torresuso, Soria")
                                                         .ubicacionLat(BigDecimal.valueOf(41.3344))
@@ -316,17 +335,17 @@ public class DataLoader {
                                         Experiencia.builder()
                                                         .titulo("Bodegas Tradicionales")
                                                         .imagenPortadaUrl(
-                                                                        "https://rutadelvinoriberadelduero.b-cdn.net/wp-content/uploads/2024/10/img_8568_baja.jpg")
+                                                                        "https://www.alhambragranada.info/images/r11.jpg")
                                                         .descripcion("Museo del vino a la intemperie")
                                                         .categoria(Categoria.MUSEO)
                                                         .direccion("Atauta, Soria, 42345")
                                                         .ubicacionLat(BigDecimal.valueOf(41.5676))
                                                         .ubicacionLng(BigDecimal.valueOf(-3.2180))
                                                         .galeriaImagenes((List.of(
-                                                                        "https://rutadelvinoriberadelduero.b-cdn.net/wp-content/uploads/2024/10/img_8576_modif_baja.jpg",
-                                                                        "https://s1.abcstatics.com/media/espana/2021/03/30/atauta-U301101579224B9G--1248x698@abc.jpg",
-                                                                        "https://rutadelvinoriberadelduero.b-cdn.net/wp-content/uploads/2024/10/img_8575_modif_baja.jpg",
-                                                                        "https://bodegastrigo.es/cdn/shop/products/dominio-atauta_grande.jpg?v=1641803352")))
+                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/09/bodegas-san-esteban-gormaz-soria-2-1.jpg",
+                                                                        "https://i0.wp.com/www.campingriolobos.es/wp-content/uploads/2020/03/20190820_113129-1024x768.jpg",
+                                                                        "https://i0.wp.com/www.campingriolobos.es/wp-content/uploads/2020/03/20190830_124908-1024x776.jpg",
+                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/09/bodegas-san-esteban-gormaz-soria-3.jpg")))
                                                         .puntosOtorgados(10)
                                                         .activo(true).build(),
 
@@ -348,7 +367,7 @@ public class DataLoader {
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://media-cdn.tripadvisor.com/media/photo-s/0e/aa/ff/be/restaurante-el-patio.jpg")
+                                                                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/21/d1/36/conecta-tu-alma-al-jardin.jpg")
                                                         .titulo("Restaurante El Patio")
                                                         .descripcion("Comida española variada de la zona")
                                                         .categoria(Categoria.RESTAURANTE)
@@ -365,17 +384,17 @@ public class DataLoader {
                                         Experiencia.builder()
                                                         .titulo("Bar-Restaurante Caracena")
                                                         .imagenPortadaUrl(
-                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_01.NuestraTierra_Fachada.jpg.transform/rp-rendition-lg/image.jpg")
+                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_10.NuestraTierra_Postre.jpg.transform/rp-rendition-xs/image.jpg")
                                                         .descripcion("Restaurante de pueblo conocido por sus vistas al monte.")
                                                         .categoria(Categoria.RESTAURANTE)
                                                         .direccion("C. San Pedro, 18, 42311 Caracena, Soria")
                                                         .ubicacionLat(BigDecimal.valueOf(41.3863))
                                                         .ubicacionLng(BigDecimal.valueOf(-3.0917))
                                                         .galeriaImagenes((List.of(
-                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_11.NuestraTierra_Comedor.jpg.transform/rp-rendition-xs/image.jpg",
-                                                                        "https://www.laterrazadelebro.es/img/900/bar-restaurante-de-caracena.jpg",
-                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_07.NuestraTierra_Comedor.jpg.transform/rp-rendition-lg/image.jpg",
-                                                                        "https://img3.restaurantguru.com/r571-Bar-Restaurante-de-Caracena-interior-2025-08-4.jpg")))
+                                                                        "https://restaurantenuestratierra.es/wp-content/uploads/elementor/thumbs/1677155737676-scaled-q3zwvjan8ucl66rk260406l1eti7fe1g6973e7aeck.jpg",
+                                                                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/44/59/c0/caption.jpg",
+                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_00.NuestraTierra_Arroz.jpg.transform/rp-rendition-md/image.jpg",
+                                                                        "https://img3.restaurantguru.com/ra0d-Bar-Restaurante-de-Caracena-interior-2025-08-3.jpg")))
                                                         .puntosOtorgados(10)
                                                         .activo(true).build(),
                                         Experiencia.builder()
@@ -389,14 +408,13 @@ public class DataLoader {
                                                         .ubicacionLng(BigDecimal.valueOf(-3.2035))
                                                         .galeriaImagenes((List.of(
                                                                         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/2c/c7/b7/caption.jpg?w=1400&h=800&s=1",
-                                                                        "https://www.sorianitelaimaginas.com/wp-content/uploads/2020/06/donde-comer-restaurantes-restaurante-antonio-san-esteban-de-gormaz-ni-te-la-imaginas.jpg",
                                                                         "https://www.restaurante-antonio.com/media/cabeceras/8/3-restaurante-antonio-1.webp",
                                                                         "https://e01-expansion.uecdn.es/assets/multimedia/imagenes/2023/03/13/16787101943645.jpg")))
                                                         .puntosOtorgados(10)
                                                         .activo(true).build(),
                                         Experiencia.builder()
                                                         .imagenPortadaUrl(
-                                                                        "https://www.guiarepsol.com/content/dam/repsol-guia/contenidos-imagenes/comer/nuestros-favoritos/restaurante-nuestra-tierra-(caracena,-soria)/_01.NuestraTierra_Fachada.jpg.transform/rp-rendition-lg/image.jpg")
+                                                                        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/79/65/53/venta-de-tiermes.jpg")
                                                         .titulo("Hotel Restaurante Tiermes")
                                                         .descripcion("Gastronomía típica de la zona con productos de la sierra Pela")
                                                         .categoria(Categoria.RESTAURANTE)
@@ -468,7 +486,7 @@ public class DataLoader {
                                 Comentario comentario = Comentario.builder()
                                                 .experiencia(experienciaSeleccionada)
                                                 .usuario(usuario)
-                                                .texto("Comentario automático del usuario " + usuario.getNombre())
+                                                .texto(comentariosSoria.get(new Random().nextInt(comentariosSoria.size())))
                                                 .fecha(Instant.now())
                                                 .build();
 

@@ -30,7 +30,7 @@ public class ComentarioService {
                 Experiencia experiencia = experienciaRepository.findById(experienciaId)
                                 .orElseThrow(() -> new RuntimeException("Experiencia no encontrada"));
 
-                return comentarioRepository.findByExperienciaOrderByFechaDesc(experiencia).stream()
+                return comentarioRepository.findByExperienciaAndUsuarioActivoTrueOrderByFechaDesc(experiencia).stream()
                                 .map(c -> new ComentarioDTO(
                                                 c.getId(),
                                                 c.getUsuario().getNombre(),

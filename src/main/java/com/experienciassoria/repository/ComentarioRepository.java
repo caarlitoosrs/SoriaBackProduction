@@ -13,7 +13,7 @@ import java.util.UUID;
 @Repository
 public interface ComentarioRepository extends JpaRepository<Comentario, UUID> {
     
-    List<Comentario> findByExperienciaOrderByFechaDesc(Experiencia experiencia);
+    List<Comentario> findByExperienciaAndUsuarioActivoTrueOrderByFechaDesc(Experiencia experiencia);
 
     List<Comentario> findByUsuarioOrderByFechaDesc(Usuario usuario);
 }
