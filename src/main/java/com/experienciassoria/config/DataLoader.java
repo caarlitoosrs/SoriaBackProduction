@@ -320,7 +320,7 @@ public class DataLoader {
                                                         .titulo("Museo Monográfico de Tiermes")
                                                         .descripcion("Visita el museo que contiene las piezas halladas en el yacimiento")
                                                         .imagenPortadaUrl(
-                                                                        "https://www.clinicalondres.es/wp-content/uploads/2023/08/iStock-1158245623-1024x682.jpg")
+                                                                        "https://www.eldiasoria.es/media/IMG/2019/BAA0F45A-9D36-CCCA-D666BB158CF5C82F.JPG")
                                                         .categoria(Categoria.MUSEO)
                                                         .direccion("Paraje Venta De Tiermes, 0 Km 7 Por, 42344 Torresuso, Soria")
                                                         .ubicacionLat(BigDecimal.valueOf(41.3344))
